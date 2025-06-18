@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datei auswählen</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <div class="container">
@@ -33,35 +34,8 @@
                 Hier können weitere Funktionen oder Informationen angezeigt werden, 
                 nachdem eine Datei ausgewählt wurde.
             </p>
+            <div id="fileContent" style="white-space: pre-wrap; background: #fff; border: 1px solid #ddd; padding: 16px; border-radius: 6px; margin-top: 24px; min-height: 120px;"></div>
         </div>
     </div>
-
-    <script>
-        function showFileInput() {
-            const fileInputContainer = document.getElementById('fileInputContainer');
-            fileInputContainer.classList.add('show');
-        }
-
-        function handleFileSelect(event) {
-            const file = event.target.files[0];
-            const fileInfo = document.getElementById('fileInfo');
-            const fileName = document.getElementById('fileName');
-            const fileSize = document.getElementById('fileSize');
-            
-            if (file) {
-                fileName.textContent = file.name;
-                fileSize.textContent = `Größe: ${formatFileSize(file.size)}`;
-                fileInfo.classList.add('show');
-            }
-        }
-
-        function formatFileSize(bytes) {
-            if (bytes === 0) return '0 Bytes';
-            const k = 1024;
-            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-        }
-    </script>
 </body>
 </html>
