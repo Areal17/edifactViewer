@@ -1,0 +1,13 @@
+{
+"inputs": [
+  {
+    "type": "promptString"
+  }
+],
+"servers": {
+  "fetch": {
+    "command": "uvx",
+    "args": ["mcp-server-fetch"]
+  }
+ }
+}
