@@ -3,39 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datei auswählen</title>
+    <meta name="description" content="EDIFACT Datei Viewer - Laden und anzeigen von EDIFACT Dateien">
+    <title>EDIFACT Datei Viewer</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="left-column">
-            <h1>Datei auswählen</h1>
+    <main class="container">
+        <section class="left-column">
+            <h1>EDIFACT Datei Viewer</h1>
             
-            <button class="file-button" onclick="showFileInput()">
+            <button class="file-button" onclick="showFileInput()" aria-label="Datei zum Upload auswählen">
                 📁 Datei auswählen
             </button>
             
             <div class="file-input" id="fileInputContainer">
-                <input type="file" id="fileInput" onchange="handleFileSelect(event)">
+                <input type="file" 
+                       id="fileInput" 
+                       accept=".edi,.txt" 
+                       onchange="handleFileSelect(event)"
+                       aria-label="EDIFACT Datei auswählen">
             </div>
             
-            <div class="file-info" id="fileInfo">
+            <div class="file-info" id="fileInfo" role="status" aria-live="polite">
                 <strong>Ausgewählte Datei:</strong><br>
                 <span id="fileName"></span><br>
                 <span id="fileSize"></span>
             </div>
-        </div>
+        </section>
         
-        <div class="right-column">
-            <!-- Rechte Spalte für weitere Inhalte -->
-            <h2 style="color: #666; margin-bottom: 20px;">Weitere Optionen</h2>
+        <section class="right-column">
+            <h2 style="color: #666; margin-bottom: 20px;">Dateiinhalt</h2>
             <p style="color: #777; line-height: 1.6;">
-                Hier können weitere Funktionen oder Informationen angezeigt werden, 
-                nachdem eine Datei ausgewählt wurde.
+                Wählen Sie eine EDIFACT-Datei aus, um den Inhalt hier anzuzeigen.
+                Unterstützte Formate: .edi, .txt
             </p>
-            <div id="fileContent" style="white-space: pre-wrap; background: #fff; border: 1px solid #ddd; padding: 16px; border-radius: 6px; margin-top: 24px; min-height: 120px;"></div>
-        </div>
-    </div>
+            <div id="fileContent" 
+                 style="white-space: pre-wrap; background: #fff; border: 1px solid #ddd; padding: 16px; border-radius: 6px; margin-top: 24px; min-height: 120px;"
+                 role="region" 
+                 aria-label="Dateiinhalt"
+                 aria-live="polite"></div>
+        </section>
+    </main>
+    
+    <script src="script.js"></script>
 </body>
 </html>
